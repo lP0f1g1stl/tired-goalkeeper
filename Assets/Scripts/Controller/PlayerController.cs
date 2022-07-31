@@ -58,10 +58,6 @@ public class PlayerController : MonoBehaviour
     private void ConverMousePositionToWorlPoint() 
     {
         Vector3 worldPos = _mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -transform.position.z));
-        if(worldPos.y < 0) 
-        {
-            worldPos = new Vector3(worldPos.x, 0, worldPos.z);
-        }
-        _dragAnchorTransform.position = worldPos;
+        _dragAnchorTransform.position = worldPos + Vector3.up;
     }
 }
