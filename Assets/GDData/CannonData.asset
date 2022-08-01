@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d22777bfd0b30bb46978af6b5f425d38, type: 3}
   m_Name: CannonData
   m_EditorClassIdentifier: 
-  _defaultFireRateRPM: 30
+  _minShootingDelay: 1
+  _maxShootingDelay: 5
+  _projectileImpulse: 1
   _projectiles:
   - {fileID: -1754849710813002390, guid: cebfb8b150dd1d84b84e0a9dfe08feda, type: 3}
   - {fileID: 5970850417148766307, guid: bcc5e86f4e6f6f748b0884ac0e811592, type: 3}
+  _bombPercent: 15
