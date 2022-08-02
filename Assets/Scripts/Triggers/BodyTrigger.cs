@@ -11,12 +11,19 @@ public class BodyTrigger : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Ball ball))
         {
-            ball.IsCollidedWithGoalkeeper = true;
-            OnBallCollision?.Invoke(ball.Points);
+            if (!ball.IsCollidedWithGoalkeeper)
+            {
+                ball.IsCollidedWithGoalkeeper = true;
+                OnBallCollision?.Invoke(ball.Points);
+                Debug.Log(ball.Points);
+            }
         }
         if (collision.gameObject.TryGetComponent(out Bomb bomb)) 
         {
             OnBallCollision?.Invoke(bomb.Points);
+            Debug.Log(bomb.Points);
+            //bomb.StopTimer();
+            bomb.gameObject.SetActive(false);
         }
     }
 }

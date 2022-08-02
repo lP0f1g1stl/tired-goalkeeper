@@ -7,7 +7,7 @@ public class ScoreHandler : MonoBehaviour
 {
     [Header("Triggers")]
     [SerializeField] private GateTrigger _gateTrigger;
-    [SerializeField] private BodyTrigger _bodyTrigger;
+    [SerializeField] private BodyTriggerHandler _bodyTrigger;
     [Space]
     [SerializeField] private ProgressBar _progressBar;
 
@@ -21,7 +21,7 @@ public class ScoreHandler : MonoBehaviour
     private void OnEnable()
     {
         _gateTrigger.OnGoal += ChangeScore;
-        _bodyTrigger.OnBallCollision += ChangeScore;
+        _bodyTrigger.OnCollision += ChangeScore;
     }
 
     public void Init(int maxScore)
@@ -41,7 +41,6 @@ public class ScoreHandler : MonoBehaviour
         Debug.Log(points);
         if (_isStarted)
         {
-            Debug.Log(points);
             _currentScore += points;
             if (_currentScore < 0) 
             { 
