@@ -9,14 +9,17 @@ public class CannonsController : MonoBehaviour
     [Space]
     [SerializeField] private ProjectileSpawner[] _projectileSpawners;
     [Space]
-    [SerializeField] private BallCannonData _cannonData;
-    [Space]
     [SerializeField] private Transform[] _shootingSectorPoints;
+
+    private BallCannonData _cannonData;
+
+    private Coroutine _shooting;
 
     private bool _isStarted;
 
-    private void Awake()
+    public void Init(BallCannonData cannonData)
     {
+        _cannonData = cannonData;
         for (int i = 0; i < _cannons.Length; i++)
         {
             _projectileSpawners[i].Init(_cannonData.Projectiles[i]);
@@ -26,10 +29,18 @@ public class CannonsController : MonoBehaviour
             _cannons[i].Init(_cannonData.MinShootingDelay);
         }
     }
-    private void Start()
+    public void StartShooting()
     {
+        if (_shooting != null)
+        {
+            StopCoroutine(_shooting);
+        }
         _isStarted = true;
-        StartCoroutine(Shooting());
+        _shooting = StartCoroutine(Shooting());
+    }
+    public void StopShooting() 
+    {
+        _isStarted = false;
     }
     private IEnumerator Shooting() 
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StackUI : MonoBehaviour
+public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Image _progressBar;
     public void ChangeProgressBar(int current, int max)

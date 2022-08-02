@@ -5,7 +5,10 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private float _lifeTime = 5f;
+    [SerializeField] private int _points;
+
     private Rigidbody _rb;
+    public int Points => _points;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();

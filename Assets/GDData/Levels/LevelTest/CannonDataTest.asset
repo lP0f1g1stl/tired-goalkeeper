@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d22777bfd0b30bb46978af6b5f425d38, type: 3}
-  m_Name: CannonData
+  m_Name: CannonDataTest
   m_EditorClassIdentifier: 
   _minShootingDelay: 1
   _maxShootingDelay: 5
