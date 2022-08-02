@@ -4,10 +4,4 @@ using UnityEngine;
 
 public class Ball : Projectile
 {
-    public bool IsCollidedWithGoalkeeper { get; set; }
-
-    private void OnEnable()
-    {
-        IsCollidedWithGoalkeeper = false;
-    }
 }

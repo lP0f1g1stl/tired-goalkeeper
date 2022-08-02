@@ -15,15 +15,16 @@ public class BodyTrigger : MonoBehaviour
             {
                 ball.IsCollidedWithGoalkeeper = true;
                 OnBallCollision?.Invoke(ball.Points);
-                Debug.Log(ball.Points);
             }
         }
         if (collision.gameObject.TryGetComponent(out Bomb bomb)) 
         {
-            OnBallCollision?.Invoke(bomb.Points);
-            Debug.Log(bomb.Points);
-            //bomb.StopTimer();
-            bomb.gameObject.SetActive(false);
+            if (!bomb.IsCollidedWithGoalkeeper)
+            {
+                bomb.IsCollidedWithGoalkeeper = true;
+                OnBallCollision?.Invoke(bomb.Points);
+                bomb.gameObject.SetActive(false);
+            }
         }
     }
 }

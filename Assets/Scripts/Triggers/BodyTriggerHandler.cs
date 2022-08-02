@@ -13,14 +13,18 @@ public class BodyTriggerHandler : MonoBehaviour
     {
         foreach(BodyTrigger bodyTrigger in _bodyTrigger) 
         {
-            bodyTrigger.OnBallCollision += OnCollision;
+            bodyTrigger.OnBallCollision += Test;
         }
     }
     private void OnDisable()
     {
         foreach (BodyTrigger bodyTrigger in _bodyTrigger)
         {
-            bodyTrigger.OnBallCollision -= OnCollision;
+            bodyTrigger.OnBallCollision -= Test;
         }
+    }
+    private void Test(int points) 
+    {
+        OnCollision?.Invoke(points);
     }
 }

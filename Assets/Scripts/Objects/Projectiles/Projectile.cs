@@ -8,6 +8,8 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] private int _points;
 
     private Rigidbody _rb;
+
+    public bool IsCollidedWithGoalkeeper { get; set; }
     public int Points => _points;
     private void Awake()
     {
@@ -29,6 +31,7 @@ public abstract class Projectile : MonoBehaviour
     private IEnumerator Timer()
     {
         yield return new WaitForSeconds(_lifeTime);
+        IsCollidedWithGoalkeeper = false;
         gameObject.SetActive(false);
     }
 }

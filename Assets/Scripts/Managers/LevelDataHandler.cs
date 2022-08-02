@@ -8,6 +8,7 @@ public class LevelDataHandler : MonoBehaviour
     [SerializeField] private CannonsController _cannonsController;
     [SerializeField] private ScoreHandler _scoreHandler;
     [SerializeField] private TimerHandler _timerHandler;
+    [SerializeField] private EndScreenHandler _endScreenHandler;
     [Space]
     [SerializeField] private EventHandler _eventHandler;
     [Header("LevelData")]
@@ -18,6 +19,7 @@ public class LevelDataHandler : MonoBehaviour
         _cannonsController.Init(_levelData.BallCannonData);
         _scoreHandler.Init(_levelData.MaxScore);
         _timerHandler.Init(_levelData.LevelMaxTime);
+        _eventHandler.Init(_cannonsController, _scoreHandler, _timerHandler, _endScreenHandler);
 
         _cannonsController.StartShooting();
         _scoreHandler.StartScoreCounting();
