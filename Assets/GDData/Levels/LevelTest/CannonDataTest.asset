@@ -18,4 +18,4 @@ MonoBehaviour:
   _projectiles:
   - {fileID: -1754849710813002390, guid: cebfb8b150dd1d84b84e0a9dfe08feda, type: 3}
   - {fileID: 5970850417148766307, guid: bcc5e86f4e6f6f748b0884ac0e811592, type: 3}
-  _bombPercent: 15
+  _bombPercent: 30
