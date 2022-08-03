@@ -55,6 +55,8 @@ public class BallCannonData : ScriptableObject
             _projectilesData[index].MinNum = _projectilesData[index - 1].MaxNum;
         }
         _projectilesData[index].MaxNum = _projectilesData[index].MinNum + percent;
+
+        Debug.Log(_projectilesData[index].MinNum + " / " + _projectilesData[index].MaxNum);
     }
 }
 

@@ -19,6 +19,6 @@ MonoBehaviour:
   - _projectile: {fileID: -1754849710813002390, guid: cebfb8b150dd1d84b84e0a9dfe08feda, type: 3}
     _spawnPercent: 55
   - _projectile: {fileID: 5970850417148766307, guid: bcc5e86f4e6f6f748b0884ac0e811592, type: 3}
-    _spawnPercent: 30
+    _spawnPercent: 20
   - _projectile: {fileID: 1204081587820723725, guid: 929c4583288f6de42ad9f21f069bef01, type: 3}
-    _spawnPercent: 15
+    _spawnPercent: 25

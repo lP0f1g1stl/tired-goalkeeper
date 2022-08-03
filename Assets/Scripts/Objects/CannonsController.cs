@@ -57,6 +57,7 @@ public class CannonsController : MonoBehaviour
         int rand = Random.Range(0, 100);
         for (int i = 0; i< _cannonData.ProjectilesData.Length; i++) 
         {
+            Debug.Log(_cannonData.ProjectilesData[i].MaxNum);
             if (_cannonData.ProjectilesData[i].MaxNum > rand) 
             {
                 return _projectileSpawners[i].TryGetProjectile();

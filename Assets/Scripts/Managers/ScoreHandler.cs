@@ -21,7 +21,7 @@ public class ScoreHandler : MonoBehaviour
     private void OnEnable()
     {
         _gateTrigger.OnGoal += ChangeScore;
-        _bodyTrigger.OnCollision += ChangeScore;
+        _bodyTrigger.OnBallCollision += ChangeScore;
     }
 
     public void Init(int maxScore)
