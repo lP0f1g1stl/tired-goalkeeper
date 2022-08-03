@@ -6,11 +6,13 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] private float _lifeTime = 5f;
     [SerializeField] private int _points;
+    [SerializeField] private ProjectileType _projectileType;
 
     private Rigidbody _rb;
 
     public bool IsCollidedWithGoalkeeper { get; set; }
     public int Points => _points;
+    public ProjectileType ProjectileType => _projectileType;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();

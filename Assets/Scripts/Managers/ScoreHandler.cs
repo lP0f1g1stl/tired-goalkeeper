@@ -12,21 +12,23 @@ public class ScoreHandler : MonoBehaviour
     [SerializeField] private ProgressBar _progressBar;
 
     private int _currentScore;
-    private int _maxScore;
+
+    private LevelData _levelData;
 
     private bool _isStarted;
 
     public event Action OnWin;
 
-    private void OnEnable()
+    private void AddListeners()
     {
         _gateTrigger.OnGoal += ChangeScore;
-        _bodyTrigger.OnBallCollision += ChangeScore;
+        _bodyTrigger.OnCollision += ChangeScore;
     }
 
-    public void Init(int maxScore)
+    public void Init(LevelData levelData)
     {
-        _maxScore = maxScore;
+        _levelData = levelData;
+        AddListeners();
     }
     public void StartScoreCounting()
     {
@@ -36,23 +38,32 @@ public class ScoreHandler : MonoBehaviour
     {
         _isStarted = false;
     }
-    public void ChangeScore(int points) 
+    public void ChangeScore(Projectile projectile) 
     {
-        Debug.Log(points);
         if (_isStarted)
         {
-            _currentScore += points;
+            switch (projectile.ProjectileType)
+            {
+                case ProjectileType.Ball:
+                    _currentScore += projectile.IsCollidedWithGoalkeeper ? -projectile.Points * 2 : projectile.Points;
+                    break;
+                case ProjectileType.Bomb:
+                    _currentScore += projectile.Points;
+                    break;
+                case ProjectileType.Coin:
+                    break;
+            }
             if (_currentScore < 0) 
             { 
                 _currentScore = 0; 
             }
-            _progressBar.ChangeProgressBar(_currentScore, _maxScore);
+            _progressBar.ChangeProgressBar(_currentScore, _levelData.MaxScore);
             CheckScore();
         }
     }
     private void CheckScore() 
     {
-        if(_currentScore >= _maxScore) 
+        if(_currentScore >= _levelData.MaxScore) 
         {
             OnWin?.Invoke();
         }

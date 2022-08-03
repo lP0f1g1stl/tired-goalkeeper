@@ -7,31 +7,24 @@ public class BodyTriggerHandler : MonoBehaviour
 {
     [SerializeField] private BodyTrigger[] _bodyTrigger;
 
-    public event Action<int> OnBallCollision;
-    public event Action<int> OnCoinCollision;
+    public event Action<Projectile> OnCollision;
 
     private void OnEnable()
     {
         foreach(BodyTrigger bodyTrigger in _bodyTrigger) 
         {
-            bodyTrigger.OnBallCollision += ChangePoints;
-            bodyTrigger.OnCoinCollision += ChangeCoins;
+            bodyTrigger.OnCollision += ChangePoints;
         }
     }
     private void OnDisable()
     {
         foreach (BodyTrigger bodyTrigger in _bodyTrigger)
         {
-            bodyTrigger.OnBallCollision -= ChangePoints;
-            bodyTrigger.OnCoinCollision -= ChangeCoins;
+            bodyTrigger.OnCollision -= ChangePoints;
         }
     }
-    private void ChangePoints(int points) 
+    private void ChangePoints(Projectile projectile) 
     {
-        OnBallCollision?.Invoke(points);
-    }
-    private void ChangeCoins(int points) 
-    {
-        OnCoinCollision?.Invoke(points);
+        OnCollision?.Invoke(projectile);
     }
 }

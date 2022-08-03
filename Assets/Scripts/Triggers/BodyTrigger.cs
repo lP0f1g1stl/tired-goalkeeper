@@ -5,35 +5,27 @@ using System;
 
 public class BodyTrigger : MonoBehaviour
 {
-    public event Action<int> OnBallCollision;
-    public event Action<int> OnCoinCollision;
+    public event Action<Projectile> OnCollision;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out Ball ball))
+        if (collision.gameObject.TryGetComponent(out Projectile projectile))
         {
-            if (!ball.IsCollidedWithGoalkeeper)
+            if (!projectile.IsCollidedWithGoalkeeper)
             {
-                ball.IsCollidedWithGoalkeeper = true;
-                OnBallCollision?.Invoke(ball.Points);
-            }
-        }
-        if (collision.gameObject.TryGetComponent(out Bomb bomb))
-        {
-            if (!bomb.IsCollidedWithGoalkeeper)
-            {
-                bomb.IsCollidedWithGoalkeeper = true;
-                OnBallCollision?.Invoke(bomb.Points);
-                bomb.gameObject.SetActive(false);
-            }
-        }
-        if (collision.gameObject.TryGetComponent(out Coin coin))
-        {
-            if (!coin.IsCollidedWithGoalkeeper)
-            {
-                coin.IsCollidedWithGoalkeeper = true;
-                OnCoinCollision?.Invoke(coin.Points);
-                coin.gameObject.SetActive(false);
+                projectile.IsCollidedWithGoalkeeper = true;
+                switch (projectile.ProjectileType)
+                {
+                    case ProjectileType.Ball:
+                        break;
+                    case ProjectileType.Bomb:
+                        projectile.gameObject.SetActive(false);
+                        break;
+                    case ProjectileType.Coin:
+                        projectile.gameObject.SetActive(false);
+                        break;
+                }
+                OnCollision?.Invoke(projectile);
             }
         }
     }

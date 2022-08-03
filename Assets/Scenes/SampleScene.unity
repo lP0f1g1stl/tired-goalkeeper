@@ -313,6 +313,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7690487382592809179, guid: 792d7b55143b20948a5fa99715dfbe4e, type: 3}
   m_PrefabInstance: {fileID: 12043270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &20674274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20674275}
+  - component: {fileID: 20674276}
+  m_Layer: 0
+  m_Name: MoneyHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &20674275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20674274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1291911059}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20674276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20674274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85af2371e7f9b2449bbf3a76b2783c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bodyTrigger: {fileID: 652491048}
+  _coinSpawner: {fileID: 1641001749}
+  _playerData: {fileID: 11400000, guid: 94dcc6e22f79908409ef6adb75574bc9, type: 2}
+--- !u!224 &123746096 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8414073355387023698, guid: 8c113468c857f414e99135aae566dca3, type: 3}
+  m_PrefabInstance: {fileID: 183014300854707616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &134102840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1033,6 +1084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beed793a5f65e164eb4c11b6f20c5998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &677138128 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6267769171019845421, guid: 792d7b55143b20948a5fa99715dfbe4e, type: 3}
+  m_PrefabInstance: {fileID: 12043270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &704766100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1392,7 @@ GameObject:
   - component: {fileID: 928132600}
   - component: {fileID: 928132601}
   m_Layer: 0
-  m_Name: LevelDataHandler
+  m_Name: DataHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,8 +1428,10 @@ MonoBehaviour:
   _scoreHandler: {fileID: 801683269}
   _timerHandler: {fileID: 704766102}
   _endScreenHandler: {fileID: 1617660915}
+  _moneyHandler: {fileID: 20674276}
   _eventHandler: {fileID: 1222165450}
   _levelData: {fileID: 11400000, guid: 41c499f0e75091447bd2abec54002c12, type: 2}
+  _coinAnimationData: {fileID: 11400000, guid: 93669b70b7e838744862c899103b9bff, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,6 +1866,7 @@ Transform:
   - {fileID: 801683268}
   - {fileID: 704766101}
   - {fileID: 1222165449}
+  - {fileID: 20674275}
   m_Father: {fileID: 1823898278}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2390,6 +2449,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _winScreen: {fileID: 722457988}
   _loseScreen: {fileID: 4119394}
+--- !u!114 &1641001749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4651635559343512551, guid: 8c113468c857f414e99135aae566dca3, type: 3}
+  m_PrefabInstance: {fileID: 183014300854707616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfc335ac2e0bbc4c815c4f854c47782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1667960430 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8414073355934038583, guid: 8c113468c857f414e99135aae566dca3, type: 3}
@@ -2664,6 +2734,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 600597398}
     m_Modifications:
+    - target: {fileID: 4651635559343512551, guid: 8c113468c857f414e99135aae566dca3, type: 3}
+      propertyPath: _endPos
+      value: 
+      objectReference: {fileID: 123746096}
+    - target: {fileID: 4651635559343512551, guid: 8c113468c857f414e99135aae566dca3, type: 3}
+      propertyPath: _startPos
+      value: 
+      objectReference: {fileID: 677138128}
     - target: {fileID: 8414073355934038582, guid: 8c113468c857f414e99135aae566dca3, type: 3}
       propertyPath: m_Name
       value: Money

@@ -6,18 +6,18 @@ using System;
 public class GateTrigger : MonoBehaviour
 {
 
-    public event Action<int> OnGoal; 
+    public event Action<Projectile> OnGoal; 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Ball ball)) 
+        if (other.TryGetComponent(out Ball Ball)) 
         {
-            if (ball.IsCollidedWithGoalkeeper)
+            if (Ball.IsCollidedWithGoalkeeper)
             {
-                OnGoal?.Invoke(-ball.Points *2);
+                OnGoal?.Invoke(Ball);
             }
             else 
             {
-                OnGoal?.Invoke(-ball.Points);
+                OnGoal?.Invoke(Ball);
             }
         }
     }
