@@ -20,6 +20,7 @@ public abstract class Projectile : MonoBehaviour
     private void OnEnable()
     {
         _rb.velocity = Vector3.zero;
+        IsCollidedWithGoalkeeper = false;
         StartRemoveTimer();
     }
     public void SetSpeed(Vector3 force) 
@@ -33,7 +34,6 @@ public abstract class Projectile : MonoBehaviour
     private IEnumerator Timer()
     {
         yield return new WaitForSeconds(_lifeTime);
-        IsCollidedWithGoalkeeper = false;
         gameObject.SetActive(false);
     }
 }

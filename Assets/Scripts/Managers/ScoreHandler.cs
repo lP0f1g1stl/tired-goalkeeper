@@ -38,28 +38,18 @@ public class ScoreHandler : MonoBehaviour
     {
         _isStarted = false;
     }
-    public void ChangeScore(Projectile projectile) 
+    public void ChangeScore(int points)
     {
         if (_isStarted)
         {
-            switch (projectile.ProjectileType)
-            {
-                case ProjectileType.Ball:
-                    _currentScore += projectile.IsCollidedWithGoalkeeper ? -projectile.Points * 2 : projectile.Points;
-                    break;
-                case ProjectileType.Bomb:
-                    _currentScore += projectile.Points;
-                    break;
-                case ProjectileType.Coin:
-                    break;
-            }
-            if (_currentScore < 0) 
-            { 
-                _currentScore = 0; 
-            }
-            _progressBar.ChangeProgressBar(_currentScore, _levelData.MaxScore);
-            CheckScore();
+            _currentScore += points;
         }
+        if (_currentScore < 0)
+        {
+            _currentScore = 0;
+        }
+        _progressBar.ChangeProgressBar(_currentScore, _levelData.MaxScore);
+        CheckScore();
     }
     private void CheckScore() 
     {

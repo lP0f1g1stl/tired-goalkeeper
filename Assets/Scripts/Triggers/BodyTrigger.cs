@@ -14,17 +14,6 @@ public class BodyTrigger : MonoBehaviour
             if (!projectile.IsCollidedWithGoalkeeper)
             {
                 projectile.IsCollidedWithGoalkeeper = true;
-                switch (projectile.ProjectileType)
-                {
-                    case ProjectileType.Ball:
-                        break;
-                    case ProjectileType.Bomb:
-                        projectile.gameObject.SetActive(false);
-                        break;
-                    case ProjectileType.Coin:
-                        projectile.gameObject.SetActive(false);
-                        break;
-                }
                 OnCollision?.Invoke(projectile);
             }
         }
