@@ -20,9 +20,9 @@ public class CannonsController : MonoBehaviour
     public void Init(BallCannonData cannonData)
     {
         _cannonData = cannonData;
-        for (int i = 0; i < _cannons.Length; i++)
+        for (int i = 0; i < _projectileSpawners.Length; i++)
         {
-            _projectileSpawners[i].Init(_cannonData.Projectiles[i]);
+            _projectileSpawners[i].Init(_cannonData.ProjectilesData[i].Projectile);
         }
         for(int i= 0; i<_cannons.Length; i++) 
         {
@@ -55,8 +55,14 @@ public class CannonsController : MonoBehaviour
     private Projectile GetProjectile() 
     {
         int rand = Random.Range(0, 100);
-        Projectile projetile = rand > _cannonData.BombPercent ? _projectileSpawners[0].TryGetProjectile() : _projectileSpawners[1].TryGetProjectile();
-        return projetile;
+        for (int i = 0; i< _cannonData.ProjectilesData.Length; i++) 
+        {
+            if (_cannonData.ProjectilesData[i].MaxNum > rand) 
+            {
+                return _projectileSpawners[i].TryGetProjectile();
+            }
+        }
+        return null;
     }
     private Vector3 CalculateTargetPoint() 
     {
