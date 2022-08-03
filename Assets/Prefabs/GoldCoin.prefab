@@ -128,3 +128,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeTime: 5
   _points: 1
+  _projectileType: 2

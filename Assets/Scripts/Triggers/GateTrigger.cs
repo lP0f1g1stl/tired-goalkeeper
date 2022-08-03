@@ -9,15 +9,15 @@ public class GateTrigger : MonoBehaviour
     public event Action<Projectile> OnGoal; 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Ball Ball)) 
+        if (other.TryGetComponent(out Projectile projectile)) 
         {
-            if (Ball.IsCollidedWithGoalkeeper)
+            if (projectile.IsCollidedWithGoalkeeper)
             {
-                OnGoal?.Invoke(Ball);
+                OnGoal?.Invoke(projectile);
             }
             else 
             {
-                OnGoal?.Invoke(Ball);
+                OnGoal?.Invoke(projectile);
             }
         }
     }
