@@ -10,13 +10,19 @@ public class BallCannon : MonoBehaviour
     
     private float _turnDuration;
 
+    private Tween _shooting;
+
     public void Init(float turnDuration)
     {
         _turnDuration = turnDuration;
     }
+    public void StopShooting() 
+    {
+        _shooting?.Kill();
+    }
     public void Shoot(Projectile projectile, Vector3 targetPoint, float force) 
     {
-        _barrelHolder.DOLookAt(targetPoint, _turnDuration)
+        _shooting = _barrelHolder.DOLookAt(targetPoint, _turnDuration)
             .OnComplete(() => 
             {
                 projectile.transform.position = _spawnPoint.position;

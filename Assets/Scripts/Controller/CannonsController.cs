@@ -41,6 +41,10 @@ public class CannonsController : MonoBehaviour
     public void StopShooting() 
     {
         _isStarted = false;
+        for (int i = 0; i < _cannons.Length; i++)
+        {
+            _cannons[i].StopShooting();
+        }
     }
     private IEnumerator Shooting() 
     {
