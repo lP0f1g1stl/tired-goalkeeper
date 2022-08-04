@@ -57,19 +57,18 @@ public class CannonsController : MonoBehaviour
         int rand = Random.Range(0, 100);
         for (int i = 0; i< _cannonData.ProjectilesData.Length; i++) 
         {
-            Debug.Log(_cannonData.ProjectilesData[i].MaxNum);
             if (_cannonData.ProjectilesData[i].MaxNum > rand) 
             {
                 return _projectileSpawners[i].TryGetProjectile();
             }
         }
-        return null;
+        return _projectileSpawners[(int)ProjectileType.Ball].TryGetProjectile();
     }
     private Vector3 CalculateTargetPoint() 
     {
         float x = Random.Range(_shootingSectorPoints[0].position.x, _shootingSectorPoints[1].position.x);
-        float y= Random.Range(_shootingSectorPoints[0].position.y, _shootingSectorPoints[1].position.y);
-        float z= Random.Range(_shootingSectorPoints[0].position.z, _shootingSectorPoints[1].position.z);
+        float y = Random.Range(_shootingSectorPoints[0].position.y, _shootingSectorPoints[1].position.y);
+        float z = Random.Range(_shootingSectorPoints[0].position.z, _shootingSectorPoints[1].position.z);
         return new Vector3(x, y, z);
     }
 }

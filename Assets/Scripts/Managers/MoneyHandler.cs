@@ -12,17 +12,29 @@ public class MoneyHandler : MonoBehaviour
     [SerializeField] private PlayerData _playerData;
 
     private int _coinPoints;
+    private CoinAnimation[] _coins;
 
     public void Init(CoinAnimationData coinAnimationData, LevelData levelData)
     {
         _coinSpawner.Init(coinAnimationData, levelData);
         _coinPoints = levelData.BallCannonData.ProjectilesData[(int)ProjectileType.Coin].Projectile.Points;
+        _coins = _coinSpawner.Coins;
         AddListeners();
     }
     private void AddListeners() 
     {
         _bodyTrigger.OnCoinCollision += SpawnCoin;
-        _coinSpawner.OnCoinEarned += ChangeCoins;
+        for (int i = 0; i < _coins.Length; i++)
+        {
+            _coins[i].OnAnimationComplete += ChangeCoins;
+        }
+    }
+    private void OnDisable()
+    {
+        for (int i = 0; i < _coins.Length; i++)
+        {
+            _coins[i].OnAnimationComplete -= ChangeCoins;
+        }
     }
     private void SpawnCoin() 
     {

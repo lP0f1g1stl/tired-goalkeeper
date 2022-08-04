@@ -13,14 +13,13 @@ public class CoinSpawner : MonoBehaviour
     private CoinAnimation[] _coins;
     private int _currentCoin;
 
-    public event Action OnCoinEarned;
+    public CoinAnimation[] Coins => _coins; 
 
     public void Init(CoinAnimationData coinData, LevelData levelData) 
     {
         _levelData = levelData;
         _coinData = coinData;
         CreateUICoins();
-        AddListeners();
     }
 
     public void CreateUICoins()
@@ -30,20 +29,6 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < _coins.Length; i++)
         {
             _coins[i] = Instantiate(_coinData.CoinPrefab, transform);
-        }
-    }
-    private void AddListeners()
-    {
-        for (int i = 0; i < _coins.Length; i++)
-        {
-            _coins[i].OnAnimationComplete += OnCoinEarned;
-        }
-    }
-    private void OnDisable()
-    {
-        for (int i = 0; i < _coins.Length; i++)
-        {
-            _coins[i].OnAnimationComplete -= OnCoinEarned;
         }
     }
     public void ShowCoin()

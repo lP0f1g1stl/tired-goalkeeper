@@ -358,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bodyTrigger: {fileID: 652491048}
   _coinSpawner: {fileID: 1641001749}
+  _moneyUI: {fileID: 1808381260}
   _playerData: {fileID: 11400000, guid: 94dcc6e22f79908409ef6adb75574bc9, type: 2}
 --- !u!224 &123746096 stripped
 RectTransform:
@@ -2587,6 +2588,17 @@ MonoBehaviour:
   _mask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1808381260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8414073355934038578, guid: 8c113468c857f414e99135aae566dca3, type: 3}
+  m_PrefabInstance: {fileID: 183014300854707616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3125e73a724a8754f98718938566224d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1823898277
 GameObject:
   m_ObjectHideFlags: 0
