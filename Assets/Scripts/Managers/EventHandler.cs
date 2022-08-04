@@ -22,7 +22,7 @@ public class EventHandler : MonoBehaviour
     {
         _timerHandler.OnTimerEnd += _cannonsController.StopShooting;
         _timerHandler.OnTimerEnd += _timerHandler.StopTimer;
-        _timerHandler.OnTimerEnd += _scoreHandler.StartScoreCounting;
+        _timerHandler.OnTimerEnd += _scoreHandler.StopScoreCounting;
         _timerHandler.OnTimerEnd += _endScreenHandler.ShowLoseScreen;
 
         _scoreHandler.OnWin += _cannonsController.StopShooting;

@@ -19,6 +19,7 @@ public class MoneyHandler : MonoBehaviour
         _coinSpawner.Init(coinAnimationData, levelData);
         _coinPoints = levelData.BallCannonData.ProjectilesData[(int)ProjectileType.Coin].Projectile.Points;
         _coins = _coinSpawner.Coins;
+        _moneyUI.ChangeText(_playerData.Coins.ToString());
         AddListeners();
     }
     private void AddListeners() 

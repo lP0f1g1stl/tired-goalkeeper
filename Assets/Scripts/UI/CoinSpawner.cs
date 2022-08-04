@@ -29,6 +29,7 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < _coins.Length; i++)
         {
             _coins[i] = Instantiate(_coinData.CoinPrefab, transform);
+            _coins[i].gameObject.SetActive(false);
         }
     }
     public void ShowCoin()
