@@ -40,6 +40,10 @@ public class CannonsController : MonoBehaviour
     }
     public void StopShooting() 
     {
+        if (_shooting != null)
+        {
+            StopCoroutine(_shooting);
+        } 
         _isStarted = false;
         for (int i = 0; i < _cannons.Length; i++)
         {
